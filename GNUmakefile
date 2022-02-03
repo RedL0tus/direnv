@@ -12,8 +12,10 @@ DISTDIR  ?= dist
 # filename of the executable
 exe = direnv$(shell go env GOEXE)
 
-# Override the go executable
-GO = go
+# Go compiler settings
+GO ?= go
+GO_BUILD_FLAGS ?=
+GO_LDFLAGS ?=
 
 # BASH_PATH can also be passed to hard-code the path to bash at build time
 
@@ -41,8 +43,6 @@ clean:
 		.gopath \
 		direnv
 
-GO_LDFLAGS =
-
 ifeq ($(shell uname), Darwin)
 	# Fixes DYLD_INSERT_LIBRARIES issues
 	# See https://github.com/direnv/direnv/issues/194
@@ -54,7 +54,7 @@ ifdef BASH_PATH
 endif
 
 ifneq ($(strip $(GO_LDFLAGS)),)
-	GO_BUILD_FLAGS = -ldflags '$(GO_LDFLAGS)'
+	GO_BUILD_FLAGS += -ldflags '$(GO_LDFLAGS)'
 endif
 
 direnv: *.go
