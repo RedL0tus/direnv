@@ -18,8 +18,7 @@ GO_BUILD_FLAGS ?=
 GO_LDFLAGS ?=
 
 # BASH_PATH can also be passed to hard-code the path to bash at build time
-
-SHELL = bash
+SHELL ?= bash
 
 ############################################################################
 # Common
