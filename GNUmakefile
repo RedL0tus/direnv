@@ -3,11 +3,11 @@
 ############################################################################
 
 # Set this to change the target installation path
-PREFIX   = /usr/local
-BINDIR   = ${PREFIX}/bin
-SHAREDIR = ${PREFIX}/share
-MANDIR   = ${SHAREDIR}/man
-DISTDIR ?= dist
+PREFIX   ?= /usr/local
+BINDIR   ?= ${PREFIX}/bin
+SHAREDIR ?= ${PREFIX}/share
+MANDIR   ?= ${SHAREDIR}/man
+DISTDIR  ?= dist
 
 # filename of the executable
 exe = direnv$(shell go env GOEXE)
